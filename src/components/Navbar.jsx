@@ -12,17 +12,16 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="log">
-        <h3>InvestHub</h3>
-
+        <h3 >Blogs App</h3>
         {/* <img src="favicon.ico" alt="" /> */}
       </div>
       <ul>
      
         <li>
-          <a href={`${auth?"/dashboard":"/signup"}`}>dashboard</a>
+          <a href={`${auth?"/dashboard":"/login"}`}>dashboard</a>
         </li>
         <li>
-          <a href="/">ALLMessage</a>
+          <a href="/">Blogs</a>
         </li>
         {auth ? (
           <>
@@ -33,7 +32,7 @@ const Navbar = () => {
         ) : (
           <>
             <li>
-              <a href="/signup">signup</a>
+              <a href="/login">LogIn</a>
             </li>
           </>
         )}

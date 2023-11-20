@@ -48,15 +48,10 @@ const Dashboard = () => {
           const responseData = await response.json();
           setBlogData(responseData);
         }
-
-
-
         setFormdata({
           title: "",
           discription: "",
         });
-
-       
       }
     }
     catch (error) {

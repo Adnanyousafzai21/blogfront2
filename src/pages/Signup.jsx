@@ -63,6 +63,7 @@ return (
             onChange={feilddata}
             required
             value={data.fristname}
+            autoComplete="off"
           />
         </div>
         <div className="single-feld">
@@ -72,6 +73,7 @@ return (
             name="lastname"
             onChange={feilddata}
             required
+            autoComplete="off"
             value={data.lastname}
           />
         </div>
@@ -83,6 +85,7 @@ return (
             onChange={feilddata}
             required
             value={data.email}
+            autoComplete="off"
           />
         </div>
         <div className="single-feld">
@@ -93,6 +96,7 @@ return (
             onChange={feilddata}
             required
             value={data.password}
+            autoComplete="off"
           />
         </div>
         <div className="single-feld">
@@ -103,6 +107,7 @@ return (
             required
             value={data.retyp_password}
             name="retyp_password"
+            autoComplete="off"
           />
         </div>
 
