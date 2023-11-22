@@ -19,7 +19,7 @@ const Signup = () => {
   const signup = async () => {
     if (data.password == data.retyp_password) {
       try {
-        const response = await fetch("https://socialappback.vercel.app/register", {
+        const response = await fetch("https://blogback2.vercel.app/register", {
           method: "post",
           headers: {
             "Content-Type": "application/json",
