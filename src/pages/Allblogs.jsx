@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 const Allblogs = () => {
   const user = localStorage.getItem("user");
-  const firstname = JSON.parse(user).fristname
+  // const firstname = JSON.parse(user).fristname
   useEffect(() => {
     getdata();
   }, []);
