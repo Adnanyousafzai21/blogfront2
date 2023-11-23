@@ -5,7 +5,7 @@ import {AiOutlineEdit} from "react-icons/ai"
 
 const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
   const user = localStorage.getItem("user");
-  const firstname = JSON.parse(user).fristname
+  const fristname = JSON.parse(user).fristname
 
   useEffect(() => {
     getdata();
@@ -13,12 +13,10 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
   const [data, setdata] = useState([]);
   const getdata = async () => {
     try {
-      const response = await fetch(`http://localhost:8001/blogs/${firstname}`);
-
+      const response = await fetch(`http://localhost:8001/blogs/${fristname}`);
       if (!response.ok) {
         throw new Error(`Request failed with status: ${response.status}`);
       }
-
       const datares = await response.json();
       setdata(datares);
     } catch (error) {
