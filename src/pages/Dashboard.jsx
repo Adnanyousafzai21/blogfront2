@@ -5,7 +5,7 @@ const Dashboard = () => {
   const [save, setSave] = useState("Send")
   const [editItemId, setEditItemId] = useState(null);
   const user = localStorage.getItem("user");
-  const firstname = JSON.parse(user).fristname
+  const fristname = JSON.parse(user).fristname
 
 
   const [formdata, setFormdata] = useState({
@@ -33,7 +33,7 @@ const Dashboard = () => {
             body: JSON.stringify({
               title: formdata.title,
               discription: formdata.discription,
-              firstname: firstname
+              fristname: fristname
             }),
           });
           const responseData = await response.json();
