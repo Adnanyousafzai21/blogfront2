@@ -13,12 +13,7 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
   const [data, setdata] = useState([]);
   const getdata = async () => {
     try {
-<<<<<<< HEAD
-      const response = await fetch(`http://localhost:8001/blogs/${fristname}`);
-=======
-      const response = await fetch(`https://socialappback.vercel.app/${firstname}`);
-
->>>>>>> cf2b393f15cbd7cadf404f23f3db49243466ac3f
+      const response = await fetch(`https://blogback2.vercel.app/blogs/${fristname}`);
       if (!response.ok) {
         throw new Error(`Request failed with status: ${response.status}`);
       }
@@ -31,7 +26,7 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
   const Delete = async (id) => {
     try {
       console.log("deleted", id)
-      const deleteblogs = await fetch(`https://socialappback.vercel.app/${id}`, {
+      const deleteblogs = await fetch(`https://blogback2.vercel.app/blogs/${id}`, {
         method: "Delete",
       })
       if (deleteblogs.status === 200) {
