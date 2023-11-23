@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { esbuildVersion } from "vite";
 const Signup = () => {
   const navigate = useNavigate();
   const [data, setdata] = useState({
@@ -18,7 +19,11 @@ const Signup = () => {
   const signup = async () => {
     if (data.password == data.retyp_password) {
       try {
+<<<<<<< HEAD
         const response = await fetch("http://localhost:8001/register", {
+=======
+        const response = await fetch("https://blogback2.vercel.app/register", {
+>>>>>>> cf2b393f15cbd7cadf404f23f3db49243466ac3f
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -32,6 +37,7 @@ const Signup = () => {
         });
 
         const responseData = await response.json();
+<<<<<<< HEAD
         console.log(responseData)
         if (response.ok) {
           if (responseData.user && responseData.user.fristname) {
@@ -48,6 +54,26 @@ const Signup = () => {
 
       }
       catch (eror) {
+=======
+        // const goodres = responseData.email
+        // if (goodres) {
+          localStorage.setItem("user", JSON.stringify(responseData))
+          navigate("/dashboard");
+         
+          setdata({
+            fristname: "",
+            lastname: "",
+            email: "",
+            password: "",
+            retyp_password: "",
+          });
+        // }
+        // else{
+        //   console.log(responseData);
+        // }
+
+      } catch (eror) {
+>>>>>>> cf2b393f15cbd7cadf404f23f3db49243466ac3f
         console.log(eror);
       }
     } else {
@@ -116,6 +142,70 @@ const Signup = () => {
             />
           </div>
 
+<<<<<<< HEAD
+=======
+  return (
+    <div>
+      <div className="form" method="post">
+        <h2>Sign Up</h2>
+        <div className="feldgroup">
+          <div className="single-feld">
+            <input
+              type="text"
+              placeholder="Fist Name"
+              name="fristname"
+              onChange={feilddata}
+              required
+              value={data.fristname}
+              autoComplete="off"
+            />
+          </div>
+          <div className="single-feld">
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lastname"
+              onChange={feilddata}
+              required
+              autoComplete="off"
+              value={data.lastname}
+            />
+          </div>
+          <div className="single-feld">
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              onChange={feilddata}
+              required
+              value={data.email}
+              autoComplete="off"
+            />
+          </div>
+          <div className="single-feld">
+            <input
+              type="text"
+              placeholder="password"
+              name="password"
+              onChange={feilddata}
+              required
+              value={data.password}
+              autoComplete="off"
+            />
+          </div>
+          <div className="single-feld">
+            <input
+              type="text"
+              placeholder="Re-type password"
+              onChange={feilddata}
+              required
+              value={data.retyp_password}
+              name="retyp_password"
+              autoComplete="off"
+            />
+          </div>
+
+>>>>>>> cf2b393f15cbd7cadf404f23f3db49243466ac3f
           <div className="submitbtn">
             <input
               type="submit"
