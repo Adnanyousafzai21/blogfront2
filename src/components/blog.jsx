@@ -1,32 +1,37 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import {AiFillDelete} from "react-icons/ai"
-import {AiOutlineEdit} from "react-icons/ai"
+import { AiFillDelete } from "react-icons/ai"
+import { AiOutlineEdit } from "react-icons/ai"
 
 const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
-  const user = localStorage.getItem("user");
-  const fristname = JSON.parse(user).fristname
-
+  const userDataString = JSON.parse(localStorage.getItem("user"))
+  const fristname = userDataString.user.fristname
+  console.log("User Data String:", userDataString.user.fristname);
+ 
   useEffect(() => {
     getdata();
   }, [formdata]);
   const [data, setdata] = useState([]);
   const getdata = async () => {
     try {
-      const response = await fetch(`https://blogback2.vercel.app/blogs/${fristname}`);
+      console.log("inside the getdata", fristname)
+      const response = await fetch(`http://localhost:8001/blogs/${fristname}`);
       if (!response.ok) {
         throw new Error(`Request failed with status: ${response.status}`);
+        // console.log(response.status)
       }
       const datares = await response.json();
       setdata(datares);
+      console.log("datares", datares)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
+
   const Delete = async (id) => {
     try {
       console.log("deleted", id)
-      const deleteblogs = await fetch(`https://blogback2.vercel.app/blogs/${id}`, {
+      const deleteblogs = await fetch(`http://localhost:8001/blogs/${id}`, {
         method: "Delete",
       })
       if (deleteblogs.status === 200) {
@@ -39,11 +44,12 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
       console.log(error)
     }
   }
+
   const update = async (id) => {
     setsave("update")
     setEditItemId(id)
     console.log("editItemId-cild", id)
-    const response = await fetch(`https://blogback2.vercel.app/getupdateblog/${id}`)
+    const response = await fetch(`http://localhost:8001/getupdateblog/${id}`)
     const responsedata = await response.json()
     console.log("response data", responsedata)
     setFormdata({
@@ -62,7 +68,7 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
                 <img src="favicon.ico" alt="" />
               </div>
               <div className="about">
-                <p>{firstname}</p>
+                <p>{userDataString.fristname}</p>
                 <p>02/08/2023</p>
               </div>
             </div>
@@ -72,16 +78,13 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
                 {itmes.discription}
               </p>
             </div>
-
           </div>
           <div className="btns">
-            <button onClick={() => Delete(itmes._id)}><AiFillDelete/></button>
-            <button onClick={() => update(itmes._id)}><AiOutlineEdit/></button>
+            <button onClick={() => Delete(itmes._id)}><AiFillDelete /></button>
+            <button onClick={() => update(itmes._id)}><AiOutlineEdit /></button>
           </div>
         </div>
       ))}
-
-
     </div>
   );
 };

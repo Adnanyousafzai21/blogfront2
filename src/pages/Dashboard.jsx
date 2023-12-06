@@ -4,8 +4,9 @@ import Blog from "../components/blog";
 const Dashboard = () => {
   const [save, setSave] = useState("Send")
   const [editItemId, setEditItemId] = useState(null);
-  const user = localStorage.getItem("user");
-  const fristname = JSON.parse(user).fristname
+  const userDataString = JSON.parse(localStorage.getItem("user"))
+  const fristname = userDataString.user.fristname
+ console.log("dashboard", userDataString.user.fristname)
 
 
   const [formdata, setFormdata] = useState({
