@@ -28,7 +28,7 @@ const Dashboard = () => {
       }
       else {
         if (save === "Send") {
-          const response = await fetch("https://blogback2.vercel.app/allblogs", {
+          const response = await fetch("http://localhost:8001/allblogs", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -41,7 +41,7 @@ const Dashboard = () => {
           setBlogData(responseData);
         }
         else if (save === "update" && editItemId) {
-          const response = await fetch(`https://blogback2.vercel.app/updateblog/${editItemId}`, {
+          const response = await fetch(`http://localhost:8001/updateblog/${editItemId}`, {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formdata),
