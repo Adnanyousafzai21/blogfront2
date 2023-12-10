@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
 
+
 const navigate = useNavigate()
   const [data, setdata] = useState({
-
     email: "",
     password: "",
   });
@@ -17,7 +17,7 @@ const navigate = useNavigate()
   const login = async () => {
 
     try {
-      const response = await fetch("http://localhost:8001/login", {
+      const response = await fetch("https://blogback2.vercel.app/login", {
         method: "post",
         headers: {
           "Content-Type": "application/json",

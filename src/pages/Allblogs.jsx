@@ -8,7 +8,7 @@ const Allblogs = () => {
   }, []);
   const [data, setdata] = useState([]);
   const getdata = async () => {
-    const response = await fetch("http://localhost:8001/allblogs");
+    const response = await fetch("https://blogback2.vercel.app/allblogs");
     const datares = await response.json();
     setdata(datares);
     console.log(datares);

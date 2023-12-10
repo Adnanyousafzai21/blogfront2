@@ -15,7 +15,7 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
   const getdata = async () => {
     try {
       console.log("inside the getdata", fristname)
-      const response = await fetch(`http://localhost:8001/blogs/${fristname}`);
+      const response = await fetch(`https://blogback2.vercel.app/blogs/${fristname}`);
       if (!response.ok) {
         throw new Error(`Request failed with status: ${response.status}`);
         // console.log(response.status)
@@ -31,7 +31,7 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
   const Delete = async (id) => {
     try {
       console.log("deleted", id)
-      const deleteblogs = await fetch(`http://localhost:8001/blogs/${id}`, {
+      const deleteblogs = await fetch(`https://blogback2.vercel.app/blogs/${id}`, {
         method: "Delete",
       })
       if (deleteblogs.status === 200) {
@@ -49,7 +49,7 @@ const Blog = ({ formdata, setsave, setFormdata, setEditItemId }) => {
     setsave("update")
     setEditItemId(id)
     console.log("editItemId-cild", id)
-    const response = await fetch(`http://localhost:8001/getupdateblog/${id}`)
+    const response = await fetch(`https://blogback2.vercel.app/getupdateblog/${id}`)
     const responsedata = await response.json()
     console.log("response data", responsedata)
     setFormdata({
