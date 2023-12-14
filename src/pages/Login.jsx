@@ -17,7 +17,7 @@ const navigate = useNavigate()
   const login = async () => {
 
     try {
-      const response = await fetch("https://blogback2.vercel.app/login", {
+      const response = await fetch("http://localhost:3000/api/login", {
         method: "post",
         headers: {
           "Content-Type": "application/json",

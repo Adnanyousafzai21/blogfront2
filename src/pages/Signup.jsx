@@ -18,7 +18,7 @@ const Signup = () => {
   const signup = async () => {
     if (data.password == data.retyp_password) {
       try {
-        const response = await fetch("https://blogback2.vercel.app/register", {
+        const response = await fetch("/api/register", {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -39,11 +39,11 @@ const Signup = () => {
             localStorage.setItem("user", JSON.stringify(responseData));
             navigate("/dashboard");
           } else {
-            console.error("User details not available in the response:", responseData);
+            console.error("User details not available in the response:",  responseData);
 
           }
-        } else {
-          alert("response data is not found")
+        }else {
+          console.error("Server returned an error:", response.status, responseData);
         }
       }
       catch (eror) {
